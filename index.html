@@ -52,6 +52,12 @@
 
 	</div>
 	<script>
+		document.body.onload = function() {
+			// document fully loaded. the markup() function should exist now
+			markup("mycontent")
+		}
+	</script>
+	<script>
 		// This loads the markup() function into the page.
 		(function() {
 			var doc = document
@@ -62,12 +68,6 @@
 			var s = doc.getElementsByTagName("script")[0]
 			s.parentNode.insertBefore(po, s)
 		})();
-	</script>
-	<script>
-		document.body.onload = function() {
-			// document fully loaded. the markup() function should exist now
-			markup("mycontent")
-		}
 	</script>
 </body>
 </html>
