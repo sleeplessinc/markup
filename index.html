@@ -52,8 +52,7 @@
 
 	</div>
 	<script>
-		document.body.onload = function() {
-			// document fully loaded. the markup() function should exist now
+		function markupReady() { 
 			markup("mycontent")
 		}
 	</script>
@@ -65,6 +64,7 @@
 			po.type = "text/javascript"
 			po.async = true
 			po.src = "https://github.com/sleeplessinc/markup/raw/master/markup.js"
+			po.onlod = function() { if(markupReady) markupReady() }
 			var s = doc.getElementsByTagName("script")[0]
 			s.parentNode.insertBefore(po, s)
 		})();
