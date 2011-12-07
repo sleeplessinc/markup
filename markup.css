@@ -3,21 +3,9 @@ body, td {
 	margin: 3%;
 	padding: 0;
 }
-span.code {
+code {
 	background: #eee;
 	border: solid 1px #ccc;
 	white-space: pre;
 	font-family: courier;
-}
-div.code {
-	padding: 1em;
-	background: #eee;
-	margin: 1em;
-	border: solid 1px #ccc;
-	white-space: pre;
-	font-family: courier;
-}
-span.note {
-	font-style: italic;
-	color: #888;
 }
