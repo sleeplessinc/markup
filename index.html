@@ -1,6 +1,6 @@
 <html>
 <body>
-	<div id=mycontent>
+	<div id=content>
 		+1 Markup 
 		+2 Simple markup language parsed at run/load time in the browser
 
@@ -53,7 +53,7 @@
 	</div>
 	<script>
 		function markupReady() { 
-			markup("mycontent")
+			markup("content")
 		}
 	</script>
 	<script>
@@ -64,7 +64,7 @@
 			po.type = "text/javascript"
 			po.async = true
 			po.src = "https://github.com/sleeplessinc/markup/raw/master/markup.js"
-			po.onlod = function() { if(markupReady) markupReady() }
+			po.onload = function() { if(markupReady) markupReady() }
 			var s = doc.getElementsByTagName("script")[0]
 			s.parentNode.insertBefore(po, s)
 		})();
