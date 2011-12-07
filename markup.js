@@ -21,19 +21,21 @@ IN THE SOFTWARE.
 */
 
 (function markup(id, cb) {
-	cb = cb || function() {} 
-	e = document.getElementById("markup");
-	t = e.innerHTML;
-	t = t.replace(/\n\s+\n/g, "\n\n");
-	t = t.replace(/\n\n+/g, "<p>\n");
+	var e = document.getElementById("markup");
+	var t = e.innerHTML;
+	t = t.replace(/\n[\t\s]+\n/g, "\n\n");
+	t = t.replace(/\n\n+/g, "\n\n<p>\n");
 	t = t.replace(/\+([1-9])([^1-9][^\n]+)\n/g, "<h$1>$2</h$1><p>\n");
 	t = t.replace(/\^\^([^\^,]+)(|\,([^\^]+))\^\^/g, "<a href=\"$1\">$3</a>\n");
+	t = t.replace(/\[{2}([^\]]+)\]{2}/g, "<img src=\"$1\">");
 	t = t.replace(/__(([^_]|_[^_])*)__/g, "<u>$1</u>");		// underline
 	t = t.replace(/\(\((([^)]|\)[^)])*)\)\)/g, "<span class=note>$1</span>");		// note
 	t = t.replace(/\*\*(([^\*]|\*[^\*])*)\*\*/g, "<b>$1</b>");
 	t = t.replace(/([^:])\/\/([^\/]*)\/\//g, "$1<i>$2</i>");
-	t = t.replace(/{{/g, "<div class=code>");
-	t = t.replace(/}}/g, "</div>");
+	t = t.replace(/\n[\t\s]*\{{2}[\t\s]*[\n$]/g, "<div class=code>");
+	t = t.replace(/\n[\t\s]*\}{2}[\t\s]*[\n$]/g, "</div><!-- end code block -->");
+	t = t.replace(/\{{2}/g, "<span class=code>");
+	t = t.replace(/\}{2}/g, "</span>");
 	t = t.replace(/\(tm\)/g, "&trade;");
 	t = t.replace(/\(r\)/g, "&reg;");
 	t = t.replace(/\(c\)/g, "&copy;");
@@ -44,7 +46,7 @@ IN THE SOFTWARE.
 	t = t.replace(/-{4,}/g, "<hr>");
 	t = t.replace(/-{3}/g, "&mdash;");
 	t = t.replace(/-{2}/g, "&ndash;");
-	e.innerHTML = t;
-	cb(t)
+	cb = cb || function() { e.innerHTML = t } 
+	cb(t, e)
 })()
 

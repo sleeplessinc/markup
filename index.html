@@ -18,7 +18,9 @@
 		**This is bold**
 		__This is underlined __
 
-		A link is made like this ... ^^http://a1widgets.com,Label^^
+		Am image looks like this: [[coffee.png]]
+
+		A link is made like this ... ^^http://a1widgets.com, Click to go to A1Widgets.com!^^
 
 		Unordered list
 
@@ -28,15 +30,18 @@
 		Ordered list
 
 			1. ordered list item
-			1. ordered list item
+			3. ordered list item
+			9. ordered list item
 
 		Some symbols
 			- (tm)
 			- (r)
 			- (c)
 
+		This is some {{inline code}} versus ...
+
 		{{
-			This is some "code"
+			This, which is is a block of code.
 		}}
 
 		Two hyphens make an n-dash, like "--"
@@ -46,12 +51,15 @@
 		Four dashes makes a horizontal rule ...
 		----
 
+		That's it!
+
 
 	</div>
 	<script>
 		var d = document, e = d.createElement('script')
 		e.async = false
 		e.src = "https://github.com/sleeplessinc/markup/raw/master/markup.js"
+		e.src = "./markup.js"
 		e.onload = function(){}
 		d.body.appendChild(e)
 	</script>
