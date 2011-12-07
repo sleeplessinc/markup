@@ -1,9 +1,6 @@
 <html>
-<head>
-	<link rel='stylesheet' href='https://github.com/sleeplessinc/markup/raw/master/markup.css' type='text/css'>
-</head>
-<body onload="bodyLoaded()">
-	<div id=content style="display: none;">
+<body>
+	<div id=mycontent>
 		+1 Heading Level 1 
 		+2 Heading Level 2 
 		+3 Heading Level 3
@@ -40,7 +37,8 @@
 		This is some {{inline code}} versus ...
 
 		{{
-			... this, which is a block of code.
+			... this, which is a
+			block of code.
 		}}
 
 		Two hyphens make an n-dash, like "--"
@@ -55,23 +53,21 @@
 
 	</div>
 	<script>
+		// This loads the markup() function into the page.
 		(function() {
 			var doc = document
 			var po = doc.createElement("script")
 			po.type = "text/javascript"
 			po.async = true
 			po.src = "https://github.com/sleeplessinc/markup/raw/master/markup.js"
-			po.src = "./markup.js"
 			var s = doc.getElementsByTagName("script")[0]
 			s.parentNode.insertBefore(po, s)
 		})();
 	</script>
 	<script>
-		function bodyLoaded() {
-			markup("content", function(html, elem) {
-				elem.innerHTML = html
-				elem.style.display = "block";
-			})
+		document.body.onload = function() {
+			// document fully loaded. the markup() function should exist now
+			markup("mycontent")
 		}
 	</script>
 </body>

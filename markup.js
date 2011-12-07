@@ -31,8 +31,8 @@ function markup(id, cb) {
 	t = t.replace(/__(([^_]|_[^_])*)__/g, "<u>$1</u>");		// underline
 	t = t.replace(/\*\*(([^\*]|\*[^\*])*)\*\*/g, "<b>$1</b>");	// bold
 	t = t.replace(/([^:])\/\/([^\/]*)\/\//g, "$1<i>$2</i>");	// italic
-	t = t.replace(/\n[\t\s]*\{{2}[\t\s]*[\n$]/g, "<div><code>");	// code block
-	t = t.replace(/\n[\t\s]*\}{2}[\t\s]*[\n$]/g, "</code></div>");
+	t = t.replace(/\n[\t\s]*\{{2}[\t\s]*[\n$]/g, "<blockquote><code>");	// code block
+	t = t.replace(/\n[\t\s]*\}{2}[\t\s]*[\n$]/g, "</code></blockquote>");
 	t = t.replace(/\{{2}/g, "<code>");	// inline code
 	t = t.replace(/\}{2}/g, "</code>");
 	t = t.replace(/\(tm\)/g, "&trade;");	// symbol
