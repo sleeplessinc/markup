@@ -20,33 +20,32 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE. 
 */
 
-(function markup(id, cb) {
-	var e = document.getElementById("markup");
+function markup(id, cb) {
+	var e = document.getElementById(id);
 	var t = e.innerHTML;
-	t = t.replace(/\n[\t\s]+\n/g, "\n\n");
-	t = t.replace(/\n\n+/g, "\n\n<p>\n");
-	t = t.replace(/\+([1-9])([^1-9][^\n]+)\n/g, "<h$1>$2</h$1><p>\n");
-	t = t.replace(/\^\^([^\^,]+)(|\,([^\^]+))\^\^/g, "<a href=\"$1\">$3</a>\n");
-	t = t.replace(/\[{2}([^\]]+)\]{2}/g, "<img src=\"$1\">");
+	t = t.replace(/\n[\t\s]+\n/g, "\n\n");		// remove superfluous whitespace
+	t = t.replace(/\n\n+/g, "\n\n<p>\n");		// 2 or more newlines together marks a paragraph
+	t = t.replace(/\+([1-9])([^1-9][^\n]+)\n/g, "<h$1>$2</h$1><p>\n");	// headings
+	t = t.replace(/\^\^([^\^,]+)(|\,([^\^]+))\^\^/g, "<a href=\"$1\">$3</a>\n");	// link
+	t = t.replace(/\[{2}([^\]]+)\]{2}/g, "<img src=\"$1\">");	// image
 	t = t.replace(/__(([^_]|_[^_])*)__/g, "<u>$1</u>");		// underline
-	t = t.replace(/\(\((([^)]|\)[^)])*)\)\)/g, "<span class=note>$1</span>");		// note
-	t = t.replace(/\*\*(([^\*]|\*[^\*])*)\*\*/g, "<b>$1</b>");
-	t = t.replace(/([^:])\/\/([^\/]*)\/\//g, "$1<i>$2</i>");
-	t = t.replace(/\n[\t\s]*\{{2}[\t\s]*[\n$]/g, "<div class=code>");
-	t = t.replace(/\n[\t\s]*\}{2}[\t\s]*[\n$]/g, "</div><!-- end code block -->");
-	t = t.replace(/\{{2}/g, "<span class=code>");
+	t = t.replace(/\*\*(([^\*]|\*[^\*])*)\*\*/g, "<b>$1</b>");	// bold
+	t = t.replace(/([^:])\/\/([^\/]*)\/\//g, "$1<i>$2</i>");	// italic
+	t = t.replace(/\n[\t\s]*\{{2}[\t\s]*[\n$]/g, "<div class=code>");	// code block
+	t = t.replace(/\n[\t\s]*\}{2}[\t\s]*[\n$]/g, "</div>");
+	t = t.replace(/\{{2}/g, "<span class=code>");	// inline code
 	t = t.replace(/\}{2}/g, "</span>");
-	t = t.replace(/\(tm\)/g, "&trade;");
-	t = t.replace(/\(r\)/g, "&reg;");
-	t = t.replace(/\(c\)/g, "&copy;");
-	t = t.replace(/\n((\s+\d+\.\s+[^\n]+\n)+)/g, "\n<ol>\n$1\n</ol>");
+	t = t.replace(/\(tm\)/g, "&trade;");	// symbol
+	t = t.replace(/\(r\)/g, "&reg;");		// symbol
+	t = t.replace(/\(c\)/g, "&copy;");		// symbol
+	t = t.replace(/\n((\s+\d+\.\s+[^\n]+\n)+)/g, "\n<ol>\n$1\n</ol>");	// ordered list
 	t = t.replace(/\n\s+\d+\.\s+/g, "\n<li>");
-	t = t.replace(/\n((\s+-\s+[^\n]+\n)+)/g, "\n<ul>\n$1\n</ul>");
+	t = t.replace(/\n((\s+-\s+[^\n]+\n)+)/g, "\n<ul>\n$1\n</ul>");		// unordered list
 	t = t.replace(/\n\s+-\s+/g, "\n<li>");
-	t = t.replace(/-{4,}/g, "<hr>");
-	t = t.replace(/-{3}/g, "&mdash;");
-	t = t.replace(/-{2}/g, "&ndash;");
+	t = t.replace(/-{4,}/g, "<hr>");		// horizontal rule
+	t = t.replace(/-{3}/g, "&mdash;");		// mdash
+	t = t.replace(/-{2}/g, "&ndash;");		// ndash
 	cb = cb || function() { e.innerHTML = t } 
 	cb(t, e)
-})()
+}
 

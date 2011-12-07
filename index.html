@@ -1,10 +1,9 @@
 <html>
 <head>
-	<zlink rel='stylesheet' href='https://github.com/sleeplessinc/markup/raw/master/markup.css' type='text/css'>
-	<link rel='stylesheet' href='markup.css' type='text/css'>
+	<link rel='stylesheet' href='https://github.com/sleeplessinc/markup/raw/master/markup.css' type='text/css'>
 </head>
-<body>
-	<div id=markup>
+<body onload="bodyLoaded()">
+	<div id=content style="display: none;">
 		+1 Heading Level 1 
 		+2 Heading Level 2 
 		+3 Heading Level 3
@@ -56,12 +55,24 @@
 
 	</div>
 	<script>
-		var d = document, e = d.createElement('script')
-		e.async = false
-		e.src = "https://github.com/sleeplessinc/markup/raw/master/markup.js"
-		e.src = "./markup.js"
-		e.onload = function(){}
-		d.body.appendChild(e)
+		(function() {
+			var doc = document
+			var po = doc.createElement("script")
+			po.type = "text/javascript"
+			po.async = true
+			po.src = "https://github.com/sleeplessinc/markup/raw/master/markup.js"
+			po.src = "./markup.js"
+			var s = doc.getElementsByTagName("script")[0]
+			s.parentNode.insertBefore(po, s)
+		})();
+	</script>
+	<script>
+		function bodyLoaded() {
+			markup("content", function(html, elem) {
+				elem.innerHTML = html
+				elem.style.display = "block";
+			})
+		}
 	</script>
 </body>
 </html>
