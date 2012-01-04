@@ -45,6 +45,9 @@ function markup(id, cb) {
 	t = t.replace(/-{4,}/g, "<hr>");		// horizontal rule
 	t = t.replace(/-{3}/g, "&mdash;");		// mdash
 	t = t.replace(/-{2}/g, "&ndash;");		// ndash
+
+	t = t.replace(/__lastModified__/g, document.lastModified);
+
 	cb = cb || function() { e.innerHTML = t } 
 	cb(t, e)
 }
