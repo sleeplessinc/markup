@@ -48,6 +48,7 @@ function markup(id, cb) {
 	t = t.replace(/-{2}/g, "&ndash;");		// ndash
 
 	t = t.replace(/\(\(lastModified\)\)/g, document.lastModified);
+	t = t.replace(/\(\(characterSet\)\)/g, document.characterSet);
 
 
 	cb = cb || function() { e.innerHTML = t } 
