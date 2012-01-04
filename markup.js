@@ -23,6 +23,7 @@ IN THE SOFTWARE.
 function markup(id, cb) {
 	var e = document.getElementById(id);
 	var t = e.innerHTML;
+
 	t = t.replace(/\n[\t\s]+\n/g, "\n\n");		// remove superfluous whitespace
 	t = t.replace(/\n\n+/g, "\n\n<p>\n");		// 2 or more newlines together marks a paragraph
 	t = t.replace(/\+([1-9])([^1-9][^\n]+)\n/g, "<h$1>$2</h$1><p>\n");	// headings
@@ -46,7 +47,8 @@ function markup(id, cb) {
 	t = t.replace(/-{3}/g, "&mdash;");		// mdash
 	t = t.replace(/-{2}/g, "&ndash;");		// ndash
 
-	t = t.replace(/__lastModified__/g, document.lastModified);
+	t = t.replace(/\(\(lastModified\)\)/g, document.lastModified);
+
 
 	cb = cb || function() { e.innerHTML = t } 
 	cb(t, e)
