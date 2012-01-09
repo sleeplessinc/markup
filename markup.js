@@ -40,7 +40,7 @@ function markup(id, cb) {
 	t = t.replace(/\(r\)/g, "&reg;");		// symbol
 	t = t.replace(/\(c\)/g, "&copy;");		// symbol
 	//t = t.replace(/\n((\s+\d+\.\s+[^\n]+\n)+)/g, "\n<ol>\n$1\n</ol>");	// ordered list
-	t = t.replace(/\n((\s+(\d+|#)\.\s+[^\n]+\n)+)/g, "\n<ol>\n$1\n</ol>");	// ordered list
+	t = t.replace(/\n((\s+(\d+\.|#)\s+[^\n]+\n)+)/g, "\n<ol>\n$1\n</ol>");	// ordered list
 	t = t.replace(/\n\s+\d+\.\s+/g, "\n<li>");
 	t = t.replace(/\n((\s+-\s+[^\n]+\n)+)/g, "\n<ul>\n$1\n</ul>");		// unordered list
 	t = t.replace(/\n\s+-\s+/g, "\n<li>");
