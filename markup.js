@@ -29,9 +29,9 @@ function markup(id, cb) {
 	t = t.replace(/\+([1-9])([^1-9][^\n]+)\n/g, "<h$1>$2</h$1><p>\n");	// headings
 	t = t.replace(/\^\^([^\^,]+)(|\,([^\^]+))\^\^/g, "<a href=\"$1\">$3</a>\n");	// link
 	t = t.replace(/\[{2}([^\]]+)\]{2}/g, "<img src=\"$1\">");	// image
+	t = t.replace(/\!\!(([^\!]|\![^\!])*)\!\!/g, "<strong>$1</strong>");		
 	t = t.replace(/__(([^_]|_[^_])*)__/g, "<u>$1</u>");		// underline
 	t = t.replace(/\*\*(([^\*]|\*[^\*])*)\*\*/g, "<b>$1</b>");	// bold
-	t = t.replace(/!!(([^!]|![^!])*)!!/g, "<strong>$1</strong>");	// bold
 	t = t.replace(/([^:])\/\/([^\/]*)\/\//g, "$1<i>$2</i>");	// italic
 	t = t.replace(/\n[\t\s]*\{{2}[\t\s]*[\n$]/g, "<blockquote><code>");	// code block
 	t = t.replace(/\n[\t\s]*\}{2}[\t\s]*[\n$]/g, "</code></blockquote>");
