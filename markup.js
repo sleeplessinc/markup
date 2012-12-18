@@ -30,7 +30,9 @@ function markup(element_or_id, cb) {
 
 	t = t.replace(/\n[\t\s]+\n/g, "\n\n");		// remove superfluous whitespace
 	t = t.replace(/\n\n+/g, "\n\n<p>\n");		// 2 or more newlines together marks a paragraph
+
 	t = t.replace(/\+([1-9])([^1-9][^\n]+)\n/g, "<h$1>$2</h$1><p>\n");	// headings
+
 	t = t.replace(/\^\^([^\^,]+)(|\,([^\^]+))\^\^/g, "<a href=\"$1\">$3</a>\n");	// link
 	t = t.replace(/\[{2}([^\]]+)\]{2}/g, "<img src=\"$1\">");	// image
 	t = t.replace(/!!(([^!]|![^!])*)!!/g, "<strong>$1</strong>");		
