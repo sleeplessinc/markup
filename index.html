@@ -1,6 +1,7 @@
 <html>
 <body>
 	<div id=content style="display: none;">
+
 		+1 Markup 
 		+2 Simple markup language parsed at run-time in the browser
 
@@ -63,15 +64,17 @@
 
 	</div>
 	<script>
+
+		// performs the actual conversion of plain text to html markup
 		function convert() { 
 			markup(document.getElementById("content"), function(t, e) {
 				e.innerHTML = t;
 				e.style.display = "block";
 			})
 		}
-	</script>
-	<script>
 
+
+		// loads the markup function
 		(function() {
 			var doc = document
 			var po = doc.createElement("script")
@@ -83,6 +86,8 @@
 			s.parentNode.insertBefore(po, s)
 		})();
 
+
+		// call convert() when page has fully loaded
 		document.body.onload = convert
 
 	</script>

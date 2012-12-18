@@ -30,9 +30,7 @@ function markup(element_or_id, cb) {
 
 	t = t.replace(/\n[\t\s]+\n/g, "\n\n");		// remove superfluous whitespace
 	t = t.replace(/\n\n+/g, "\n\n<p>\n");		// 2 or more newlines together marks a paragraph
-
 	t = t.replace(/\+([1-9])([^1-9][^\n]+)\n/g, "<h$1>$2</h$1><p>\n");	// headings
-
 	t = t.replace(/\^\^([^\^,]+)(|\,([^\^]+))\^\^/g, "<a href=\"$1\">$3</a>\n");	// link
 	t = t.replace(/\[{2}([^\]]+)\]{2}/g, "<img src=\"$1\">");	// image
 	t = t.replace(/!!(([^!]|![^!])*)!!/g, "<strong>$1</strong>");		
@@ -46,6 +44,7 @@ function markup(element_or_id, cb) {
 	t = t.replace(/\(tm\)/g, "&trade;");	// symbol
 	t = t.replace(/\(r\)/g, "&reg;");		// symbol
 	t = t.replace(/\(c\)/g, "&copy;");		// symbol
+	t = t.replace(/\(cy\)/g, "&copy;&nbsp;"+(new Date().getFullYear()));		// symbol
 	t = t.replace(/\n((\s+(\d+\.|#)\s+[^\n]+\n)+)/g, "\n<ol>\n$1\n</ol>");	// ordered list
 	t = t.replace(/\n\s+(\d+\.|#)\s+/g, "\n<li>");
 	t = t.replace(/\n((\s+-\s+[^\n]+\n)+)/g, "\n<ul>\n$1\n</ul>");		// unordered list
