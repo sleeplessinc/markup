@@ -1,6 +1,6 @@
 <html>
 <body>
-	<div id=content>
+	<div id=content style="display: none;">
 		+1 Markup 
 		+2 Simple markup language parsed at run/load time in the browser
 
@@ -62,22 +62,28 @@
 
 	</div>
 	<script>
-		function markupReady() { 
-			markup("content")
+		function convert() { 
+			markup(document.getElementById("content"), function(t, e) {
+				e.innerHTML = t;
+				e.style.display = "block";
+			})
 		}
 	</script>
 	<script>
-		// This loads the markup() function into the page.
+
 		(function() {
 			var doc = document
 			var po = doc.createElement("script")
 			po.type = "text/javascript"
 			po.async = true
 			po.src = "https://github.com/sleeplessinc/markup/raw/master/markup.js"
-			po.onload = function() { if(markupReady) markupReady() }
+			po.onload = convert
 			var s = doc.getElementsByTagName("script")[0]
 			s.parentNode.insertBefore(po, s)
 		})();
+
+		document.body.onload = convert
+
 	</script>
 </body>
 </html>

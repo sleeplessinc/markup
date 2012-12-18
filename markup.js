@@ -1,5 +1,5 @@
 /*
-Copyright 2011 Sleepless Software Inc. All rights reserved.
+Copyright 2012 Sleepless Software Inc. All rights reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to
@@ -20,8 +20,12 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE. 
 */
 
-function markup(id, cb) {
-	var e = document.getElementById(id);
+function markup(element_or_id, cb) {
+
+	var e = element_or_id;
+	if(typeof e === "string")
+		e = document.getElementById(element_or_id);
+
 	var t = e.innerHTML;
 
 	t = t.replace(/\n[\t\s]+\n/g, "\n\n");		// remove superfluous whitespace
