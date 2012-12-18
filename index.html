@@ -1,75 +1,97 @@
 <html>
 <body>
-	<div id=content style="display: none;">
+	<style>
+		* {
+			font-family: helvetica;
+		}
+		table {
+			border-collapse: collapse;
+		}
+		td {
+			vertical-align: top;
+			border-collapse: collapse;
+			border: solid 1px #888;
+			width: 50%;
+		}
+		td:first-child {
+			white-space: pre;
+		}
+	</style>
+	<table><tr>
+		<td id=plaintext>
++1 Markup 
++2 Simple markup language parsed at run-time in the browser
+(cy) ^^http://sleepless.com,Sleepless Inc.^^ --- All Rights Reserved
 
-		+1 Markup 
-		+2 Simple markup language parsed at run-time in the browser
+This is the first sentence of the first paragraph.
+This is the second sentence of the first paragraph.
 
-		This is the first sentence of the first paragraph.
-		This is the second sentence of the first paragraph.
+This is the second paragraph.  It also has two sentances but the underlying markup
+is written a little differently.
 
-		This is the second paragraph.  It also has two sentances but the underlying markup
-		is written a little differently.
+Unordered list
 
-		Unordered list
+	- unordered list item
+	- unordered list item
 
-			- unordered list item
-			- unordered list item
+Ordered list
 
-		Ordered list
+	# ordered list item
+	# ordered list item
+	# ordered list item
 
-			# ordered list item
-			# ordered list item
-			# ordered list item
+	or ...
 
-			or ...
+	1. ordered list item
+	2. ordered list item
+	3. ordered list item
 
-			1. ordered list item
-			2. ordered list item
-			3. ordered list item
+An image looks like this: [[coffee.png]]
 
-		An image looks like this: [[coffee.png]]
+A link is made like this ...
+^^https://github.com/sleeplessinc/markup, Click to get Markup!^^
 
-		A link is made like this ... ^^http://a1widgets.com, Click to go to A1Widgets.com!^^
+//This is italic//
+**This is bold**
+__This is underlined __
+!!This is strong!!
 
-		//This is italic//
-		**This is bold**
-		__This is underlined __
-		!!This is strong!!
+Some symbols
+	- (tm)
+	- (r)
+	- (c)
+	- (cy)
 
-		Some symbols
-			- (tm)
-			- (r)
-			- (c)
+This is some {{inline code}} versus ...
 
-		This is some {{inline code}} versus ...
+{{
+	... this, which is a
+	block of code.
+}}
 
-		{{
-			... this, which is a
-			block of code.
-		}}
+Two hyphens make an n-dash, like "--"
 
-		Two hyphens make an n-dash, like "--"
+Three hyphens make an m-dash, like "---"
 
-		Three hyphens make an m-dash, like "---"
+Four dashes makes a horizontal rule, like ...
+----
 
-		Four dashes makes a horizontal rule, like ...
-		----
+Special vars:
+	- ((lastModified))
 
-		Special vars:
-			- ((lastModified))
+That's it!
 
-		That's it!
+		</td>
+		<td id=markedup>
+		</td>
+	</tr></table>
 
-
-	</div>
 	<script>
 
 		// performs the actual conversion of plain text to html markup
 		function convert() { 
-			markup(document.getElementById("content"), function(t, e) {
-				e.innerHTML = t;
-				e.style.display = "block";
+			markup(document.getElementById("plaintext"), function(t, e) {
+				document.getElementById("markedup").innerHTML = t;
 			})
 		}
 
