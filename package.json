@@ -1,0 +1,13 @@
+{
+  "name": "markup",
+  "version": "1.0.0",
+  "description" : "Simplified Text to HTML Markup language",
+  "author": "Joe Hitchens <joe@sleepless.com> (sleepless.com)",
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/sleeplessinc/markup/raw/master/LICENSE"
+  },
+  "repository": "git://github.com/sleeplessinc/markup.git",
+  "dependencies": {
+  }
+}
