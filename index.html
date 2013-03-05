@@ -1,17 +1,16 @@
 <html>
 <body>
 	<style>
-		* {
-			font-family: helvetica;
-		}
 		table {
 			border-collapse: collapse;
+			width: 100%;
 		}
 		td {
 			vertical-align: top;
 			border-collapse: collapse;
 			border: solid 1px #888;
 			width: 50%;
+			padding: 2mm;
 		}
 		td:first-child {
 			white-space: pre;
@@ -22,7 +21,8 @@
 			color: #357;
 		}
 	</style>
-	<table><tr>
+	<table>
+	<tr>
 		<td id=plaintext>
 +1 Markup 
 +2 Simple markup language parsed at run-time in the browser
@@ -87,35 +87,16 @@ Special vars:
 That's it!
 
 		</td>
-		<td id=markedup>
-		</td>
-	</tr></table>
+		<td id=markedup></td>
+	</tr>
+	</table>
 
+	<script src="http://a1widgets.com/markup/markup.js"></script>
 	<script>
 
-		// performs the actual conversion of plain text to html markup
-		function convert() { 
-			markup(document.getElementById("plaintext"), function(t, e) {
-				document.getElementById("markedup").innerHTML = t;
-			})
-		}
-
-
-		// loads the markup function
-		(function() {
-			var doc = document
-			var po = doc.createElement("script")
-			po.type = "text/javascript"
-			po.async = true
-			po.src = "https://github.com/sleeplessinc/markup/raw/master/markup.js"
-			po.onload = convert
-			var s = doc.getElementsByTagName("script")[0]
-			s.parentNode.insertBefore(po, s)
-		})();
-
-
-		// call convert() when page has fully loaded
-		document.body.onload = convert
+		var h = document.getElementById( "plaintext" ).innerHTML;
+		h = Markup.convert( h );
+		document.getElementById( "markedup" ).innerHTML = h;
 
 	</script>
 </body>
