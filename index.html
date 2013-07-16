@@ -16,30 +16,37 @@
 			white-space: pre;
 		}
 		code {
-			font-family: courier;
 			background-color: #eee;
 			color: #357;
+			white-space: pre;
 		}
 	</style>
 	<table>
 	<tr>
 		<td id=plaintext>
-+1 Markup 
-+2 Simple markup language parsed at run-time in the browser
-(cy) ^^http://sleepless.com,Sleepless Inc.^^ --- All Rights Reserved
+Markup 
+======
+
+Simple markup language parsed at run-time in the browser
+--------------------------------------------------------
+(cy) (link http://sleepless.com/blog/ Sleepless Inc.) -- All Rights Reserved
+
 
 This is the first sentence of the first paragraph.
 This is the second sentence of the first paragraph.
 
-This is the second paragraph.  It also has two sentances but the underlying markup
+This is the second paragraph.  It also has two
+sentences but the underlying markup
 is written a little differently.
 
 Unordered list
+--------------
 
 	- unordered list item
 	- unordered list item
 
 Ordered list
+------------
 
 	# ordered list item
 	# ordered list item
@@ -51,38 +58,61 @@ Ordered list
 	2. ordered list item
 	3. ordered list item
 
-An image looks like this: [[coffee.png]]
+Image
+-----
+(image coffee.png Yum! )
 
-A link is made like this ...
-^^https://github.com/sleeplessinc/markup, Click to get Markup!^^
 
-//This is italic//
-**This is bold**
-__This is underlined __
-!!This is strong!!
+Links
+-----
+(link https://github.com/sleeplessinc/markup, Click to get Markup!)
 
-Some symbols
+**This is emphasized text** and __This is underlined text__
+
+Symbols
+------
 	- (tm)
 	- (r)
 	- (c)
 	- (cy)
 
-This is some {{inline code}} versus ...
+Block quote
+-----------
+	"
+	To be, or not to be.  That is the question!
 
-{{
-	... this, which is a
-	block of code.
-}}
+	Whether 'tis nobler to suffer the slings and arrows of outrageous fortune,
+	or to whatever ...
+	"
+
+
+Code
+-----
+Some {inline code} versus ...
+
+{
+	// ... this, which is a block of code.
+	var x = 1;
+	var y = 9;
+}
+
+Dashes
+-----
 
 Two hyphens make an n-dash, like "--"
 
 Three hyphens make an m-dash, like "---"
 
-Four dashes makes a horizontal rule, like ...
+Four dashes on a line by themselves, and preceded by a blank line
+makes a horizontal rule like this ...
 ----
 
-Special vars:
-	- ((lastModified))
+Special
+-------
+Only if used in browser code:
+
+	- Page last modified (lastModified)
+
 
 That's it!
 
@@ -91,7 +121,7 @@ That's it!
 	</tr>
 	</table>
 
-	<script src="http://a1widgets.com/markup/markup.js"></script>
+	<script src="./markup.js"></script>
 	<script>
 
 		var h = document.getElementById( "plaintext" ).innerHTML;
