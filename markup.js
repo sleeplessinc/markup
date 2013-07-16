@@ -37,9 +37,12 @@ Markup = {
 		t = t.replace(/\(\s*link\s+([^\s\)]+)\s*\)/gi, "(link $1 $1)");
 		t = t.replace(/\(\s*link\s+([^\s\)]+)\s*([^\)]+)\)/gi, "<a href=\"$1\">$2</a>");
 
-		// embedded image
+		// image
 		t = t.replace(/\(\s*image\s+([^\s\)]+)\s*\)/gi, "(image $1 $1)");
 		t = t.replace(/\(\s*image\s+([^\s\)]+)\s*([^\)]+)\)/gi, "<img src=\"$1\" title=\"$2\">");
+		// figure
+		t = t.replace(/\(\s*figure\s+([^\s\)]+)\s*\)/gi, "(figure $1 $1)");
+		t = t.replace(/\(\s*figure\s+([^\s\)]+)\s*([^\)]+)\)/gi, "<figure><img src=\"$1\" title=\"$2\"><figcaption>$2</figcaption></figure>");
 
 		t = t.replace(/__(([^_]|_[^_])*)__/gi, "<u>$1</u>");		// underline
 		t = t.replace(/\*\*(([^\*]|\*[^\*])*)\*\*/gi, "<em>$1</em>");	// emphasis
