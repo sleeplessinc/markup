@@ -46,7 +46,6 @@ Markup = {
 
 		t = t.replace(/__(([^_]|_[^_])*)__/gi, "<u>$1</u>");		// underline
 		t = t.replace(/\*\*(([^\*]|\*[^\*])*)\*\*/gi, "<em>$1</em>");	// emphasis
-		//t = t.replace(/''([^']+)''/gi, "\n<blockquote>$1</blockquote>\n");	// blockquote
 		t = t.replace(/\n\s*"\s*\n([^"]+)"\s*\n/gi, "\n<blockquote>$1</blockquote>\n");	// blockquote
 		t = t.replace(/\n\s*{\s*\n([^"]+)}\s*\n/gi, "\n<blockquote><code>$1</code></blockquote>\n");
 		t = t.replace(/{([^}]+)}/gi, "<code>$1</code>");	// code
@@ -79,4 +78,10 @@ Markup = {
 	}
 
 };
+
+/*
+String.prototype.markup = function() {
+	return Markup.convert( this );
+};
+*/
 
