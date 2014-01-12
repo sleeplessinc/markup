@@ -24,6 +24,7 @@ IN THE SOFTWARE.
 Markup = {
 
 	convert: function( t ) {
+		t = "\n\n"+t;
 		t = t.replace(/\r/gi, "\n");
 
 		// a blank line marks a paragraph
