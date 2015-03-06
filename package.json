@@ -1,6 +1,6 @@
 {
   "name": "sleepless-markup",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description" : "Simplified Text to HTML Markup language",
   "author": "Joe Hitchens <joe@sleepless.com> (sleepless.com)",
   "license": {
@@ -8,6 +8,4 @@
     "url": "https://github.com/sleeplessinc/markup/raw/master/LICENSE"
   },
   "repository": "git://github.com/sleeplessinc/markup.git",
-  "dependencies": {
-  }
 }
