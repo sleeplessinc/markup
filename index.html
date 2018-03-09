@@ -12,9 +12,6 @@
 			width: 50%;
 			padding: 2mm;
 		}
-		td:first-child {
-			white-space: pre;
-		}
 		code {
 			background-color: #eee;
 			color: #357;
@@ -29,10 +26,17 @@
 			font-size: 80%;
 			color: #aaa;
 		}
+		textarea{
+			width: 100%;
+			height: 100vh;
+			margin: 0;
+			padding: 1em;
+		}
 	</style>
 	<table>
 	<tr>
-		<td id=plaintext>
+		<td>
+		<textarea id="plaintext">
 Markup 
 ======
 
@@ -132,18 +136,27 @@ Only if used in browser code:
 
 
 That's it!
-
+		</textarea>
 		</td>
-		<td id=markedup></td>
+		<td id="markedup"></td>
 	</tr>
 	</table>
 
 	<script src="./markup.js"></script>
 	<script>
 
-		var h = document.getElementById( "plaintext" ).innerHTML;
-		h = Markup.convert( h );
-		document.getElementById( "markedup" ).innerHTML = h;
+		var h = document.querySelector( "#plaintext" );
+
+		h.addEventListener("input", function(){
+			redraw();
+		});
+
+		redraw();
+
+		function redraw(){
+				let p = Markup.convert( document.querySelector("#plaintext").value );
+				document.querySelector("#markedup").innerHTML = p;
+		}
 
 	</script>
 </body>
