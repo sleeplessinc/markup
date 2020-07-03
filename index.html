@@ -26,116 +26,123 @@
 			font-size: 80%;
 			color: #aaa;
 		}
-		textarea{
+		textarea {
 			width: 100%;
 			height: 100vh;
 			margin: 0;
 			padding: 1em;
+		}
+		blockquote {
+			color: #357;
+			font-style: italic;
 		}
 	</style>
 	<table>
 	<tr>
 		<td>
 		<textarea id="plaintext">
-Markup 
-======
+			Markup 
+			======
 
-Simple markup language parsed at run-time in the browser
---------------------------------------------------------
-(cy) (link http://sleepless.com/blog/ Sleepless Inc.) -- All Rights Reserved
-
-
-This is the first sentence of the first paragraph.
-This is the second sentence of the first paragraph.
-
-This is the second paragraph.  It also has two
-sentences but the underlying markup
-is written a little differently.
-
-Unordered list
---------------
-
-	- unordered list item
-	- unordered list item
-
-Ordered list
-------------
-
-	# ordered list item
-	# ordered list item
-	# ordered list item
-
-Image
------
-(image coffee.png Yum!)
+			Simple markup language parsed at run-time in the browser
+			--------------------------------------------------------
+			(cy) (xlink http://sleepless.com/blog/ Sleepless Inc.) -- All Rights Reserved
 
 
-Figure
------
+			This is the first sentence of the first paragraph.
+			This is the second sentence of the first paragraph.
 
-(figure coffee.png Yum!)
+			This is the second paragraph.  It also has two
+			sentences but the underlying markup
+			is written a little differently.
 
+			Unordered list
+			--------------
 
-Links
------
-(link https://github.com/sleeplessinc/markup Click to get Markup!)
+				- unordered list item
+				- unordered list item
 
-Styles
-------
-**This is emphasized text** and __This is underlined text__
+			Ordered list
+			------------
 
-Symbols
-------
-	- (tm)
-	- (r)
-	- (c)
-	- (cy)
+				# ordered list item 1
+				# ordered list item 2
+				# ordered list item 3
 
-Block quote
------------
-	"
-	To be, or not to be.  That is the question!
-
-	Whether 'tis nobler to suffer the slings and arrows of outrageous fortune,
-	or to whatever ...
-	"
+			Image
+			-----
+			(image coffee.png Yum!)
 
 
-Code
------
-Some {inline code} versus ...
+			Figure
+			-----
 
-{
-	// ... this, which is a block of code.
-	var x = 1;
-	var y = 9;
-}
-
-Dashes
------
-
-Two hyphens make an n-dash, like "--"
-
-Three hyphens make an m-dash, like "---"
-
-Four dashes makes a horizontal rule like this ...
-----
-
-Five or more dashes makes an h2 heading out of the preceding line.
------
-
-Five or more equals signs makes an h1 heading out of the preceding line.
-=====
+			(figure coffee.png Yum!)
 
 
-Special
--------
-Only if used in browser code:
+			Links
+			-----
+			(link https://github.com/sleeplessinc/markup Click to get Markup!)
 
-	- Page last modified (lastModified)
+			(xlink https://github.com/sleeplessinc/markup Click to get Markup in a separate tab!)
+
+			Styles
+			------
+			**This is emphasized text** and __This is underlined text__
+
+			Symbols
+			------
+				- (tm)
+				- (r)
+				- (c)
+				- (cy)
+				- (cm A1 Widgets Ltd.)
+
+			Block quote
+			-----------
+				"
+				To be, or not to be.  That is the question!
+
+				Whether 'tis nobler to suffer the slings and arrows of outrageous fortune,
+				or to whatever ...
+				"
 
 
-That's it!
+			Code
+			-----
+			Some {inline code} versus ...
+
+			{
+				// ... this, which is a block of code.
+				var x = 1;
+				var y = 9;
+			}
+
+			Dashes
+			-----
+
+			Two hyphens make an n-dash, like "--"
+
+			Three hyphens make an m-dash, like "---"
+
+			Four dashes makes a horizontal rule like this ...
+			----
+
+			Five or more dashes makes an h2 heading out of the preceding line.
+			-----
+
+			Five or more equals signs makes an h1 heading out of the preceding line.
+			=====
+
+
+			Special
+			-------
+			Only if used in browser code:
+
+				- Page last modified (lastModified)
+
+
+			That's it!
 		</textarea>
 		</td>
 		<td id="markedup"></td>
