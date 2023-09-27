@@ -29,108 +29,128 @@
 	<tr>
 		<td>
 		<textarea id="plaintext">
-			Markup 
-			======
+Markup 
+======
 
-			Simple markup language parsed at run-time in the browser
-			--------------------------------------------------------
-			(c) ^^http://sleepless.com/blog/ Sleepless Inc.^^ -- All Rights Reserved
-
-
-			This is the first sentence of the first paragraph.
-			This is the second sentence of the first paragraph.
-
-			This is the second paragraph.  It also has two
-			sentences but the text that produces it is
-			written a little differently.
-
-			Unordered list
-			--------------
-
-				- unordered list item
-				- unordered list item
-
-			Ordered list
-			------------
-
-				# ordered list item 1
-				# ordered list item 2
-				# ordered list item 3
-
-			Image
-			-----
-			|coffee.png Yum yum!|
+Simple markup language parsed at run-time in the browser
+--------------------------------------------------------
+(c) ^^http://sleepless.com/blog/ Sleepless Inc.^^ -- All Rights Reserved
 
 
+This is the first sentence of the first paragraph.
+This is the second sentence of the first paragraph.
 
-			Links
-			-----
-			^ https://github.com/sleeplessinc/markup   ^
+This is the second paragraph.  It also has two
+sentences but the text that produces it is
+written a little differently.
 
-			^https://github.com/sleeplessinc/markup Click to get Markup!^
+Unordered list
+--------------
 
-			^^https://github.com/sleeplessinc/markup Click to get Markup in a new tab!^^
+	- A bullet point 
+	- Another bullet point
 
+Ordered list
+------------
 
-			Styles
-			------
-			**This is emphasized text**,
-			***this is bold text***
-			and __this is underlined text.__
+	1 First
+	2 Then
+	3 Finally
 
-			** *** __ This is all 3! __ *** **
-
-			Symbols
-			------
-				- (tm)
-				- (r)
-				- (c)
-				- (cy)
-				- (cm A1 Widgets Ltd.)
+Image
+-----
+|coffee.png Yum yum!|
 
 
-			Block quote
-			-----------
-			""
-			To be, or not to be.  "That is the question!"
-
-			Whether 'tis nobler to suffer the slings and arrows of outrageous fortune,
-			or to whatever ...
-			""
+Figure
+-----
+( figure coffee.png Yum yum! )
 
 
-			Code
-			-----
-			Some {{inline code}} versus ...
+Links
+-----
+^ https://github.com/sleeplessinc/markup   ^
 
-			{{
-				// ... this, which is a block of code.
-				var x = 1;
-				var y = 9;
-			}}
+^https://github.com/sleeplessinc/markup Click to get Markup!^
 
-			Dashes
-			-----
-
-			Two hyphens make an n-dash, like "--"
-
-			Three hyphens make an m-dash, like "---"
-
-			Four dashes makes a horizontal rule like this ...
-			----
-
-			Five or more dashes makes an h2 heading out of the preceding line.
-			-----
-
-			Five or more equals signs makes an h1 heading out of the preceding line.
-			=====
+^^https://github.com/sleeplessinc/markup Click to get Markup in a new tab!^^
 
 
-			Special
-			-------
-			Only if used in browser code:
+Styles
+------
+//This is emphasized text//,
+**this is bold text**
+and __this is underlined text.__
 
-				- Page last modified (lastModified)
+** __ // This is all 3! //  __ **
+
+Symbols
+------
+	- (tm)
+	- (r)
+	- (c)
+
+
+Block quote
+-----------
+"
+To be, or not to be.  That is the question!
+
+Whether 'tis nobler to suffer the slings and arrows of outrageous fortune,
+or to whatever ...
+"
+
+
+Alignment
+---------
+
+>
+This is centered
+>
+
+>>
+This is right justified
+>>
+
+
+Code
+-----
+Some {inline code} versus ...
+
+{{
+	// ... this, which is a block of code.
+	var x = 1;
+	var y = 9;
+}}
+
+Dashes
+-----
+
+Two hyphens make an n-dash, like "--"
+
+Three hyphens make an m-dash, like "---"
+
+Four dashes makes a horizontal rule like this ...
+----
+
+Five or more equals signs makes an h1 heading out of the preceding line.
+=====
+
+Five or more dashes makes an h2 heading out of the preceding line.
+-----
+
+An H3 heading
+- - - - - - -
+
+An H4 heading
+-  -  -  -  -
+
+
+Special
+-------
+Only if used in browser code:
+
+	- Page last modified (lastModified)
 
 
 		</textarea>
