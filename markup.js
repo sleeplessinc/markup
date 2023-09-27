@@ -26,49 +26,71 @@ Markup = {};
 Markup.convert = function( t ) {
 
 	// nuke CRs
-	t = t.replace(/\r/gi, "\n")
+	t = t.replace( /\r\n/gi, "\n" )
+	// change tabs to 4 spaces
+	t = t.replace( /\t/gi, "    " )
+
+	let inbq = false;
+	let incode = false;
+
+	let lines = t.split( "\n" );
+	lines = lines.map( line => {
+		//if( /^\s{5}/.test( line ) ) {
+		//	// call it centered
+		//	line = "<center>" + line + "</center>";
+		//}
+		line = line.trim();
+		if( line == "\"\"" ) {
+			line = inbq ? "</blockquote>" : "<blockquote>";
+			inbq = ! inbq;
+		}
+		return line;
+	} );
+	t = lines.join( "\n" );
 
 	// remove leading trailing whitespace on all lines
-	t = t.split( /\n/ ).map( l => l.trim() ).join( "\n" );
+	//t = t.split( /\n/ ).map( l => l.trim() ).join( "\n" );
 
 	// prepend a couple newlines so that regexps below will match at the beginning.
 	t = "\n\n" + t;		// note: will cause a <p> to always appear at start of output
 
+	// font styles
+	t = t.replace(/\*\*\*(([^\*]|\*[^\*])*)\*\*\*/gi, "<b>$1</b>");	// bold
+	t = t.replace(/\*\*(([^\*]|\*[^\*])*)\*\*/gi, "<em>$1</em>");	// emphasis
+	t = t.replace(/__(([^_]|_[^_])*)__/gi, "<u>$1</u>");		// underline
+
+	// blockquote
+	//t = t.replace(/\n\s*"\s*\n([^\n]+)\s*\n\s*"/gi, "\n<blockquote>$1</blockquote>\n");
+//	t = t.replace( /\n\s*"\s*\n([^\n]+)\n\s*"\s*\n/gi, "\n<blockquote>$1</blockquote>\n");
+//	t = t.replace( /""(.*)""/gi, "\n<blockquote>$1</blockquote>\n");
+
+	// code
+	t = t.replace(/\n\s*{{\s*\n([^}]+)}}\s*\n/gi, "\n<pre><code>$1</code></pre>\n");
+	t = t.replace(/{{([^}]+)}}/gi, "<code>$1</code>");	// code
+
 	// one or more blank lines mark a paragraph
-	t = t.replace(/\n\n+/gi, "\n\n<p>\n");
+	t = t.replace(/\n\n+/gi, "\n\n<p>\n");	// XXX not ideal
 	
 	// headings h1 and h2
 	t = t.replace(/\n([^\s\n][^\n]+)\n={5,}\s*\n/gi, "\n<h1>$1</h1>\n" );
 	t = t.replace(/\n([^\s\n][^\n]+)\n-{5,}\s*\n/gi, "\n<h2>$1</h2>\n" );
 
 	// hyper link/anchor
-	t = t.replace(/\(\s*link\s+([^\s\)]+)\s*\)/gi, "(link $1 $1)");
-	t = t.replace(/\(\s*link\s+([^\s\)]+)\s*([^\)]+)\)/gi, "<a href=\"$1\">$2</a>");
-
-	// hyper link/anchor that opens in new window/tab
-	t = t.replace(/\(\s*xlink\s+([^\s\)]+)\s*\)/gi, "(xlink $1 $1)");
-	t = t.replace(/\(\s*xlink\s+([^\s\)]+)\s*([^\)]+)\)/gi, "<a target=_blank href=\"$1\">$2</a>");
+	t = t.replace( /\^\^\s*([^\s]*)\s*\^\^/gi, "^$1 $1^" );
+	t = t.replace( /\^\^\s*([^\s]*)\s+([^\^]+)\^\^/gi, "<a target=_blank href=\"$1\">$2</a>" );
+	t = t.replace( /\^\s*([^\s]*)\s*\^/gi, "^$1 $1^" );
+	t = t.replace( /\^\s*([^\s]*)\s+([^\^]+)\^/gi, "<a href=\"$1\">$2</a>" );
 
 	// image
-	t = t.replace(/\(\s*image\s+([^\s\)]+)\s*\)/gi, "(image $1 $1)");
-	t = t.replace(/\(\s*image\s+([^\s\)]+)\s*([^\)]+)\)/gi, "<img src=\"$1\" title=\"$2\">");
-
-	// figure
-	t = t.replace(/\(\s*figure\s+([^\s\)]+)\s*\)/gi, "(figure $1 $1)");
-	t = t.replace(/\(\s*figure\s+([^\s\)]+)\s*([^\)]+)\)/gi, "<figure><img src=\"$1\" title=\"$2\"><figcaption>$2</figcaption></figure>");
-
-	t = t.replace(/__(([^_]|_[^_])*)__/gi, "<u>$1</u>");		// underline
-	t = t.replace(/\*\*(([^\*]|\*[^\*])*)\*\*/gi, "<em>$1</em>");	// emphasis
-	t = t.replace(/\n\s*"\s*\n([^"]+)"\s*\n/gi, "\n<blockquote>$1</blockquote>\n");	// blockquote
-	t = t.replace(/\n\s*{\s*\n([^"]+)}\s*\n/gi, "\n<blockquote><code>$1</code></blockquote>\n");
-	t = t.replace(/{([^}]+)}/gi, "<code>$1</code>");	// code
+	t = t.replace(/\|\s*([^\s\)]+)\s*\|/gi, "(image $1 $1)");
+	t = t.replace(/\|\s*([^\s\)]+)\s*([^\)]+)\|/gi, "<img src=\"$1\" title=\"$2\">");
 
 	// special
 	t = t.replace(/\(tm\)/gi, "&trade;");	
 	t = t.replace(/\(r\)/gi, "&reg;");	
 	t = t.replace(/\(c\)/gi, "&copy;");
-	t = t.replace(/\(cy\)/gi, "&copy;&nbsp;"+(new Date().getFullYear()));
-	t = t.replace(/\(cm\s([^)]+)\)/gi, "&copy;&nbsp;"+(new Date().getFullYear())+"&nbsp;$1&nbsp;&ndash;&nbsp;All&nbsp;Rights&nbsp;Reserved" )
+	//t = t.replace(/\(cy\)/gi, "&copy;&nbsp;"+(new Date().getFullYear()));
+	//t = t.replace(/\(cm\s([^)]+)\)/gi, "&copy;&nbsp;"+(new Date().getFullYear())+"&nbsp;$1&nbsp;&ndash;&nbsp;All&nbsp;Rights&nbsp;Reserved" )
 
 	// unordered list
 	t = t.replace(/\n((\s*-\s+[^\n]+\n)+)/gi, "\n<ul>\n$1\n</ul>");

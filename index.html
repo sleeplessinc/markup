@@ -14,17 +14,6 @@
 		}
 		code {
 			background-color: #eee;
-			color: #357;
-			white-space: pre;
-		}
-		figure {
-			border: solid 1px #ccc;
-			margin: 5mm;
-			text-align: center;
-		}
-		figcaption {
-			font-size: 80%;
-			color: #aaa;
 		}
 		textarea {
 			width: 100%;
@@ -33,7 +22,6 @@
 			padding: 1em;
 		}
 		blockquote {
-			color: #357;
 			font-style: italic;
 		}
 	</style>
@@ -46,15 +34,15 @@
 
 			Simple markup language parsed at run-time in the browser
 			--------------------------------------------------------
-			(cy) (xlink http://sleepless.com/blog/ Sleepless Inc.) -- All Rights Reserved
+			(c) ^^http://sleepless.com/blog/ Sleepless Inc.^^ -- All Rights Reserved
 
 
 			This is the first sentence of the first paragraph.
 			This is the second sentence of the first paragraph.
 
 			This is the second paragraph.  It also has two
-			sentences but the underlying markup
-			is written a little differently.
+			sentences but the text that produces it is
+			written a little differently.
 
 			Unordered list
 			--------------
@@ -71,24 +59,26 @@
 
 			Image
 			-----
-			(image coffee.png Yum!)
+			|coffee.png Yum yum!|
 
-
-			Figure
-			-----
-
-			(figure coffee.png Yum!)
 
 
 			Links
 			-----
-			(link https://github.com/sleeplessinc/markup Click to get Markup!)
+			^ https://github.com/sleeplessinc/markup   ^
 
-			(xlink https://github.com/sleeplessinc/markup Click to get Markup in a separate tab!)
+			^https://github.com/sleeplessinc/markup Click to get Markup!^
+
+			^^https://github.com/sleeplessinc/markup Click to get Markup in a new tab!^^
+
 
 			Styles
 			------
-			**This is emphasized text** and __This is underlined text__
+			**This is emphasized text**,
+			***this is bold text***
+			and __this is underlined text.__
+
+			** *** __ This is all 3! __ *** **
 
 			Symbols
 			------
@@ -98,25 +88,26 @@
 				- (cy)
 				- (cm A1 Widgets Ltd.)
 
+
 			Block quote
 			-----------
-				"
-				To be, or not to be.  That is the question!
+			""
+			To be, or not to be.  "That is the question!"
 
-				Whether 'tis nobler to suffer the slings and arrows of outrageous fortune,
-				or to whatever ...
-				"
+			Whether 'tis nobler to suffer the slings and arrows of outrageous fortune,
+			or to whatever ...
+			""
 
 
 			Code
 			-----
-			Some {inline code} versus ...
+			Some {{inline code}} versus ...
 
-			{
+			{{
 				// ... this, which is a block of code.
 				var x = 1;
 				var y = 9;
-			}
+			}}
 
 			Dashes
 			-----
@@ -142,7 +133,6 @@
 				- Page last modified (lastModified)
 
 
-			That's it!
 		</textarea>
 		</td>
 		<td id="markedup"></td>
